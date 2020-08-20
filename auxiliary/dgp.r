@@ -12,7 +12,7 @@
 n=2011
 ########### Socioeconomic characteristics #######################
 
-    vec<-c(rep('did not finish',1267),rep('finished',744))
+    vec<-c(rep('did not finish',n*0.630035),rep('finished', n*0.37))
     ffs<-sample(vec)
     lfi<- rnorm(n,mean=8.15, sd=0.3)
     perf<-rnorm(n, mean=1.36, sd=1.32)
@@ -21,16 +21,16 @@ n=2011
 
 ################### outcomes round 2 ###########################
 
-    vec1<-c(rep('did not return',845),rep('returned',1166))
+    vec1<-c(rep('did not return',n*0.42019),rep('returned',n*0.58))
     returntosch<-sample(vec1)
-    vec2<-c(rep(0,1408),rep(1,603))
+    vec2<-c(rep(0,n*0.70015),rep(1,n*0.3))
     cwork2<-sample(vec2)
     hpw<-rnorm(n, mean=4.1, sd=8.9)
     hpw2<-hpw*cwork2
     epw<-abs(rnorm(n, mean=67.7, sd=172.6))
     epw2<-epw*cwork2
     dipw2<-abs(rnorm(n, mean=56.4, sd=71.1))
-    vectreat<-c(rep('treated', 1004), rep('control', 1007))
+    vectreat<-c(rep('treated', n*0.49), rep('control', n*0.5102))
     treat<-sample(vectreat)
     frpsmoke2<-funcrange(N=n, mean=2.68, sd=1.13, lwr=1, upr=5, nnorm=10000)
     frpdrink2<-funcrange(N=n, mean=3.32, sd=1.27, lwr=1, upr=5, nnorm=10000) 
@@ -44,18 +44,18 @@ n=2011
 
 ################# outcomes round 3 #############################
 
-    vec<-c(rep('did not finish',1267),rep('finished',744))
+    vec<-c(rep('did not finish',n*0.630035),rep('finished', n*0.37))
     ffs<-sample(vec)
     lfi<- rnorm(n,mean=8.15, sd=0.3)
     perf<-rnorm(n, mean=1.36, sd=1.32)
     age<-rnorm(n, mean=14.3, sd=0.79)
     
-    vectreat<-c(rep('treated', 1004), rep('control', 1007))
+    vectreat<-c(rep('treated', n*0.49), rep('control', n*0.5102))
     treat<-sample(vectreat)
-    vec7<-c(rep('did not finish',1368),rep('finished',643))
+    vec7<-c(rep('did not finish',n*0.68),rep('finished',n*0.32024))
     finhigh<-sample(vec7)
     yearssch<-rnorm(n, mean=9.86, sd=1.77)
-    vec8<-c(rep(0,1288),rep(1,723))
+    vec8<-c(rep(0,n*0.64),rep(1,n*0.36002))
     cwork3<-sample(vec8)
     hpww<-abs(rnorm(n, mean=6, sd=11.6))
     hpw3<-hpww*cwork3
@@ -76,16 +76,16 @@ n=2011
 #### Round 2
 
 #dgp4 <- function(n){
-    vec3<-c(rep('does not smoke',1911),rep('smokes',100))
+    vec3<-c(rep('does not smoke',n*0.9502735),rep('smokes',n*0.05))
     csmoke2<-sample(vec3)
 
-    vec4<-c(rep('does not drink',785),rep('drinks',1226))
+    vec4<-c(rep('does not drink',n*0.39),rep('drinks',n*0.61015))
     cda2<-sample(vec4)
 
-    vec5<-c(rep('does not drink once a week',1629),rep('drinks once a week',382))
+    vec5<-c(rep('does not drink once a week',n*0.810045),rep('drinks once a week',n*0.19))
     droncew2<-sample(vec5)
 
-    vec6<-c(rep('does not dirnk every day',1971),rep('drinks every day',40))
+    vec6<-c(rep('does not drink every day', n*0.9801094),rep('drinks every day',n*0.02))
     drevd2<-sample(vec6)
 
     drfr2<-funcrange(N=n, mean=1.96, sd=0.7, lwr=1, upr=4, nnorm=10000)
@@ -95,16 +95,16 @@ n=2011
 #### Round 3
 
 #dgp5 <- function(n){
-    vec9<-c(rep('does not smoke',1750),rep('smokes',261))
+    vec9<-c(rep('does not smoke',n*0.8703),rep('smokes',n*0.13))
     csmoke3<-sample(vec9)
 
-    vec10<-c(rep('does not drink',543),rep('drinks',1468))
+    vec10<-c(rep('does not drink',n*0.27002),rep('drinks',n*0.73))
     cda3<-sample(vec10)
 
-    vec11<-c(rep('does not drink once a week',1086),rep('drinks once a week',925))
+    vec11<-c(rep('does not drink once a week',n*0.54003),rep('drinks once a week',n*0.46))
     droncew3<-sample(vec11)
 
-    vec12<-c(rep('does not drink every day',1750),rep('drinks every day',261))
+    vec12<-c(rep('does not drink every day',n*0.87022),rep('drinks every day',n*0.13))
     drevd3<-sample(vec12)
 
     drfr3<-funcrange(N=n, mean=2.37, sd=0.95, lwr=1, upr=4, nnorm=10000)
