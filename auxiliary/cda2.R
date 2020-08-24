@@ -1,4 +1,4 @@
-rf.cda2<-randomForest(Y2.train$cda2~., data=X2.train,proximity=T, importance=T, metric='Accuracy', nodes=T)
+rf.cda2<-randomForest(cda2.data$cda2~., data=cda2.data[-1],proximity=T, importance=T, metric='Accuracy', nodes=T)
 
 #rf.cda2.pred<-predict(rf.cda2,round2.x.test )
 #rf.cda2$err.rate

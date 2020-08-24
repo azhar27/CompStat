@@ -1,7 +1,5 @@
-  
-#dgp2 <- function(n){
-    
-    funcrange <- function(N, mean, sd, lwr, upr, nnorm) {
+################################ Currently drinks #############################################
+funcrange <- function(N, mean, sd, lwr, upr, nnorm) {
   samp <- rnorm(nnorm, mean, sd)
   samp <- samp[samp >= lwr & samp <= upr]
   if (length(samp) >= N) {
@@ -9,19 +7,16 @@
   }  
   stop(simpleError("Try increasing nnorm."))
 }
-n=2011
-########### Socioeconomic characteristics #######################
 
-    vec<-c(rep('did not finish',n*0.630035),rep('finished', n*0.37))
+dgp.cda2 <- function(n){  ###### round 2
+    vec<-c(rep(0,n*0.630035),rep(1, n*0.37))
     ffs<-sample(vec)
     lfi<- rnorm(n,mean=8.15, sd=0.3)
-    perf<-rnorm(n, mean=1.36, sd=1.32)
+    perf<-abs(rnorm(n, mean=1.36, sd=1.32))
     age<-rnorm(n, mean=14.3, sd=0.79)
     retedu<-abs(rnorm(n, mean=272, sd=616))
-
-################### outcomes round 2 ###########################
-
-    vec1<-c(rep('did not return',n*0.42019),rep('returned',n*0.58))
+    
+    vec1<-c(rep(0,n*0.42019),rep(1,n*0.58))
     returntosch<-sample(vec1)
     vec2<-c(rep(0,n*0.70015),rep(1,n*0.3))
     cwork2<-sample(vec2)
@@ -30,29 +25,36 @@ n=2011
     epw<-abs(rnorm(n, mean=67.7, sd=172.6))
     epw2<-epw*cwork2
     dipw2<-abs(rnorm(n, mean=56.4, sd=71.1))
-    vectreat<-c(rep('treated', n*0.49), rep('control', n*0.5102))
+    vectreat<-c(rep(0, n*0.49), rep(1, n*0.5102))
     treat<-sample(vectreat)
     frpsmoke2<-funcrange(N=n, mean=2.68, sd=1.13, lwr=1, upr=5, nnorm=10000)
     frpdrink2<-funcrange(N=n, mean=3.32, sd=1.27, lwr=1, upr=5, nnorm=10000) 
     
-    X2<-data.frame(ffs, lfi, perf, age, returntosch, cwork2, hpw2, epw2, retedu, dipw2, treat,frpsmoke2, frpdrink2)
+    X1<-cbind(ffs, lfi, perf, age, returntosch, cwork2, hpw2, epw2, dipw2, treat,frpsmoke2, frpdrink2)
     
- #return (data.frame(X2))}
+    beta<-c(-0.8, -1.5, 0.02, 0.37, -2.5, 0.07, 0.1, 0.1, 0.1, -1.5, 0.02, 0.7)
+    eps<-rnorm(n, mean=0, sd=1)
+    cda.2<-(exp(X1%*%beta+eps))/(1+exp(X1%*%beta+eps))
+    cda2<-ifelse(cda.2<0.5, 'does not drink', 'drinks')
+    
+ return (data.frame(cda2,X1))
+}
 
-#dgp3 <- function(n){
+
+dgp.cda3<-function(n){  ######## round 3
 
 
-################# outcomes round 3 #############################
 
-    vec<-c(rep('did not finish',n*0.630035),rep('finished', n*0.37))
+
+    vec<-c(rep(0,n*0.630035),rep(1, n*0.37))
     ffs<-sample(vec)
     lfi<- rnorm(n,mean=8.15, sd=0.3)
-    perf<-rnorm(n, mean=1.36, sd=1.32)
-    age<-rnorm(n, mean=14.3, sd=0.79)
+    perf<-abs(rnorm(n, mean=1.36, sd=1.32))
+    age<-rnorm(n, mean=17.3, sd=0.79)
     
-    vectreat<-c(rep('treated', n*0.49), rep('control', n*0.5102))
+    vectreat<-c(rep(0, n*0.49), rep(1, n*0.5102))
     treat<-sample(vectreat)
-    vec7<-c(rep('did not finish',n*0.68),rep('finished',n*0.32024))
+    vec7<-c(rep(0,n*0.68),rep(1,n*0.32024))
     finhigh<-sample(vec7)
     yearssch<-rnorm(n, mean=9.86, sd=1.77)
     vec8<-c(rep(0,n*0.64),rep(1,n*0.36002))
@@ -69,13 +71,64 @@ n=2011
     smkbad<-funcrange(N=n, mean=3.67, sd=0.68, lwr=1, upr=5, nnorm=10000)
     drinkbad<-funcrange(N=n, mean=2.49, sd=0.63, lwr=1, upr=5, nnorm=10000) 
     
-    X3<-data.frame(ffs, lfi, perf, age, treat, finhigh, yearssch, cwork3, hpw3, epw3, dipw3, patient3, frpsmoke3, 
+    X3<-cbind(ffs, lfi, perf, age, treat, finhigh, yearssch, cwork3, hpw3, epw3, dipw3, patient3, frpsmoke3, 
               frpdrink3, risk, smkbad, drinkbad )
- #  return (data.frame(X3))}
+    
+    
+    b<-c(-0.8, -0.9, -0.4, 0.37, -1.5, -1.1, -2.1, 0.11, 0.1, 0.12, 0.1, -0.05, 0.7, 1.7, 0.4, -0.15, -2.5)
+    eps<-rnorm(n, mean=0, sd=1)
+    cda.3<-(exp(X3%*%b+eps))/(1+exp(X3%*%b+eps))
+    cda3<-ifelse(cda.3<0.5, 'does not drink', 'drinks')
+    
+    
+ return (data.frame(cda3,X3))
 
-#### Round 2
-
-#dgp4 <- function(n){
+############################## Currently smokes ###################################################
+dgp.csmoke2<- function(n){  ###### round 2
+    vec<-c(rep(0,n*0.630035),rep(1, n*0.37))
+    ffs<-sample(vec)
+    lfi<- rnorm(n,mean=8.15, sd=0.3)
+    perf<-abs(rnorm(n, mean=1.36, sd=1.32))
+    age<-rnorm(n, mean=14.3, sd=0.79)
+    retedu<-abs(rnorm(n, mean=272, sd=616))
+    
+    vec1<-c(rep(0,n*0.42019),rep(1,n*0.58))
+    returntosch<-sample(vec1)
+    vec2<-c(rep(0,n*0.70015),rep(1,n*0.3))
+    cwork2<-sample(vec2)
+    hpw<-rnorm(n, mean=4.1, sd=8.9)
+    hpw2<-hpw*cwork2
+    epw<-abs(rnorm(n, mean=67.7, sd=172.6))
+    epw2<-epw*cwork2
+    dipw2<-abs(rnorm(n, mean=56.4, sd=71.1))
+    vectreat<-c(rep(0, n*0.49), rep(1, n*0.5102))
+    treat<-sample(vectreat)
+    frpsmoke2<-funcrange(N=n, mean=2.68, sd=1.13, lwr=1, upr=5, nnorm=10000)
+    frpdrink2<-funcrange(N=n, mean=3.32, sd=1.27, lwr=1, upr=5, nnorm=10000) 
+    
+    X.sm<-cbind(ffs, lfi, perf, age, returntosch, cwork2, hpw2, epw2, dipw2, treat,frpsmoke2, frpdrink2)
+    
+    beta<-c(-12, -15, -13.6, 0.25, -25.5, 0.3, 0.4, 0.5, 0.5, -24.5, 1.2, 0.02)
+    eps<-rnorm(n, mean=0, sd=1)
+    csmoke.2<-(exp(X.sm%*%beta+eps))/(1+exp(X.sm%*%beta+eps))
+    csmoke2<-ifelse(cda.2<0.5, 'does not smoke', 'smokes')
+    
+    return (data.frame(csmoke2,X.sm))
+}
+    
+#### round 3
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     vec3<-c(rep('does not smoke',n*0.9502735),rep('smokes',n*0.05))
     csmoke2<-sample(vec3)
 
@@ -94,7 +147,7 @@ n=2011
 
 #### Round 3
 
-#dgp5 <- function(n){
+dgp5 <- function(n){
     vec9<-c(rep('does not smoke',n*0.8703),rep('smokes',n*0.13))
     csmoke3<-sample(vec9)
 

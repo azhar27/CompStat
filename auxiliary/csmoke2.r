@@ -1,4 +1,4 @@
-rf.csmoke2<-randomForest(formula=Y2.train$csmoke2~., data=X2.train,proximity=T, importance=T)
+rf.csmoke2<-randomForest(formula=csmoke2.data$csmoke2~., data=csmoke2.data[-1],proximity=T, importance=T, ntree=1000)
 #rf.cda2.pred<-predict(rf.cda2,round2.x.test )
 #rf.cda2$err.rate
 

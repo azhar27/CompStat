@@ -1,4 +1,4 @@
-rf.cda3<-randomForest(formula=Y3.train$cda3~., data=X3.train,proximity=T, importance=T, mtry=3)
+rf.cda3<-randomForest(formula=cda3.data$cda3~., data=cda3.data,proximity=T, importance=T)
 #ntree=500,mtry=3,
 
 #rf.cda2.pred<-predict(rf.cda2,round2.x.test )
