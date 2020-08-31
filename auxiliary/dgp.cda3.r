@@ -71,3 +71,8 @@ cda3.data$finhigh<-as.factor(cda3.data$finhigh)
 cda3.data$cwork3<-as.factor(cda3.data$cwork3)
 cda3.data$treat<-as.factor(cda3.data$treat)
 
+
+
+
+
+

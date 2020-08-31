@@ -41,16 +41,17 @@ dgp.csmoke2<- function(n){  ###### round 2
 }
 
 n=2011
-csmoke2.data<-dgp.csmoke2(n)
-
-csmoke2.data$frpsmoke2<-round(csmoke2.data$frpsmoke2)
-csmoke2.data$frpdrink2<-round(csmoke2.data$frpdrink2)
-csmoke2.data$frpsmoke2<-as.factor(csmoke2.data$frpsmoke2)
-csmoke2.data$frpdrink2<-as.factor(csmoke2.data$frpdrink2)
-
-csmoke2.data$ffs<-as.factor(csmoke2.data$ffs)
-csmoke2.data$returntosch<-as.factor(csmoke2.data$returntosch)
-csmoke2.data$cwork2<-as.factor(csmoke2.data$cwork2)
-csmoke2.data$treat<-as.factor(csmoke2.data$treat)
 
 
+
+csmoke2.test<-dgp.csmoke2(n)
+
+csmoke2.test$frpsmoke2<-round(csmoke2.test$frpsmoke2)
+csmoke2.test$frpdrink2<-round(csmoke2.test$frpdrink2)
+csmoke2.test$frpsmoke2<-as.factor(csmoke2.test$frpsmoke2)
+csmoke2.test$frpdrink2<-as.factor(csmoke2.test$frpdrink2)
+
+csmoke2.test$ffs<-as.factor(csmoke2.test$ffs)
+csmoke2.test$returntosch<-as.factor(csmoke2.test$returntosch)
+csmoke2.test$cwork2<-as.factor(csmoke2.test$cwork2)
+csmoke2.test$treat<-as.factor(csmoke2.test$treat)

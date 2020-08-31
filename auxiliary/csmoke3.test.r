@@ -50,25 +50,28 @@ dgp.csmoke3<-function(n){
  return (data.frame(csmoke3,Xsm3))
 }
 
+
 n=2011
-csmoke3.data<-dgp.csmoke3(n)
 
-csmoke3.data$frpsmoke3<-round(csmoke3.data$frpsmoke3)
-csmoke3.data$frpdrink3<-round(csmoke3.data$frpdrink3)
-csmoke3.data$frpsmoke3<-as.factor(csmoke3.data$frpsmoke3)
-csmoke3.data$frpdrink3<-as.factor(csmoke3.data$frpdrink3)
-csmoke3.data$patient3<-round(csmoke3.data$patient3)
-csmoke3.data$risk<-round(csmoke3.data$risk)
-csmoke3.data$patient3<-as.factor(csmoke3.data$patient3)
-csmoke3.data$risk<-as.factor(csmoke3.data$risk)
-csmoke3.data$smkbad<-round(csmoke3.data$smkbad)
-csmoke3.data$drinkbad<-round(csmoke3.data$drinkbad)
-csmoke3.data$smkbad<-as.factor(csmoke3.data$smkbad)
-csmoke3.data$drinkbad<-as.factor(csmoke3.data$drinkbad)
+csmoke3.test<-dgp.csmoke3(n)
 
-csmoke3.data$ffs<-as.factor(csmoke3.data$ffs)
-csmoke3.data$treat<-as.factor(csmoke3.data$treat)
-csmoke3.data$finhigh<-as.factor(csmoke3.data$finhigh)
-csmoke3.data$cwork3<-as.factor(csmoke3.data$cwork3)
+csmoke3.test$frpsmoke3<-round(csmoke3.test$frpsmoke3)
+csmoke3.test$frpdrink3<-round(csmoke3.test$frpdrink3)
+csmoke3.test$frpsmoke3<-as.factor(csmoke3.test$frpsmoke3)
+csmoke3.test$frpdrink3<-as.factor(csmoke3.test$frpdrink3)
+csmoke3.test$patient3<-round(csmoke3.test$patient3)
+csmoke3.test$risk<-round(csmoke3.test$risk)
+csmoke3.test$patient3<-as.factor(csmoke3.test$patient3)
+csmoke3.test$risk<-as.factor(csmoke3.test$risk)
+csmoke3.test$smkbad<-round(csmoke3.test$smkbad)
+csmoke3.test$drinkbad<-round(csmoke3.test$drinkbad)
+csmoke3.test$smkbad<-as.factor(csmoke3.test$smkbad)
+csmoke3.test$drinkbad<-as.factor(csmoke3.test$drinkbad)
+
+csmoke3.test$ffs<-as.factor(csmoke3.test$ffs)
+csmoke3.test$treat<-as.factor(csmoke3.test$treat)
+csmoke3.test$finhigh<-as.factor(csmoke3.test$finhigh)
+csmoke3.test$cwork3<-as.factor(csmoke3.test$cwork3)
+
 
 

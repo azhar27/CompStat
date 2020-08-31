@@ -45,23 +45,14 @@ dgp.cda2 <- function(n){
  return (data.frame(cda2,X1))
 }
 
-n=2011
-cda2.data<-dgp.cda2(n)
+cda2.test<-dgp.cda2(n)
 
-cda2.data$frpsmoke2<-round(cda2.data$frpsmoke2)
-cda2.data$frpdrink2<-round(cda2.data$frpdrink2)
-cda2.data$frpsmoke2<-as.factor(cda2.data$frpsmoke2)
-cda2.data$frpdrink2<-as.factor(cda2.data$frpdrink2)
+cda2.test$frpsmoke2<-round(cda2.test$frpsmoke2)
+cda2.test$frpdrink2<-round(cda2.test$frpdrink2)
+cda2.test$frpsmoke2<-as.factor(cda2.test$frpsmoke2)
+cda2.test$frpdrink2<-as.factor(cda2.test$frpdrink2)
 
-cda2.data$ffs<-as.factor(cda2.data$ffs)
-cda2.data$returntosch<-as.factor(cda2.data$returntosch)
-cda2.data$cwork2<-as.factor(cda2.data$cwork2)
-cda2.data$treat<-as.factor(cda2.data$treat)
-
-
-
-
-
-
-
-
+cda2.test$ffs<-as.factor(cda2.test$ffs)
+cda2.test$returntosch<-as.factor(cda2.test$returntosch)
+cda2.test$cwork2<-as.factor(cda2.test$cwork2)
+cda2.test$treat<-as.factor(cda2.test$treat)
